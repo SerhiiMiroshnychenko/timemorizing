@@ -57,11 +57,13 @@ h3 {
 button {
   font-size: 1.5rem;
   margin: 30px;
-  background-color: rgb(128, 184, 244);
+  background-color: #fdb44b;
   border-radius: 5px;
   border: none;
   padding: 10px;
   cursor: pointer;
+  color: #005792;
+  font-weight: 600;
 }
 
 .btn-sm {
@@ -70,10 +72,11 @@ button {
 }
 
 .bg-red {
-  background-color: rgb(184, 93, 93);
+  background-color: #00bbf0;
 }
 
 .deleted-items {
+  color: #fdb44b;
   font-size: 1.7rem;
 }
 
