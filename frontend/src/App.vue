@@ -10,7 +10,7 @@ import Time from './components/Time.vue'
 @import './assets/base.css';
 
 #app {
-  margin: 100px auto;
+  margin: 10px auto;
 }
 
 .green {

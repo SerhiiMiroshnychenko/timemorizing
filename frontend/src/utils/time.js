@@ -76,16 +76,14 @@ async function analyzeTime() {
             beginAtZero: true,
             ticks: {
               font: {
-                size: 20, // розмір шрифту на вісі X
-                color: 'red' // колір шрифту на вісі X
+                size: 16, // розмір шрифту на вісі X
               }
             }
           },
           x: {
             ticks: {
               font: {
-                size: 20, // розмір шрифту на вісі X
-                color: 'gold' // колір шрифту на вісі X
+                size: 16, // розмір шрифту на вісі X
               }
             }
           }
@@ -94,8 +92,7 @@ async function analyzeTime() {
           legend: {
             labels: {
               font: {
-                size: 20, // розмір шрифту на вісі X
-                color: 'white' // колір шрифту на вісі X
+                size: 16, // розмір шрифту на вісі X
               }
             }
           }

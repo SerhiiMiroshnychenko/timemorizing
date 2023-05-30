@@ -30,20 +30,28 @@ export default {
 <template>
   <div class="greetings">
     <h1 class="green">{{ currentTime }}</h1>
-    <h3>Натисніть кнопку для збереження в базу даних</h3>
-    <button @click="saveTime">Зберегти час</button>
-    <h3 v-if="savedTimes.length && showSavedTimes">
-      Раніше збережені часи:
-    </h3>
-    <div v-if="showSavedTimes" class="deleted-items" v-for="savedTime in savedTimes" :key="savedTime.id">
-      <div class="deleted-item">{{ savedTime.time }}</div>
-      <button class="btn-sm bg-red" @click="() => deleteTime(savedTime.id)">
-        Видалити
-      </button>
+  </div>
+  <div class="container">
+    <div class="left-section">
+      <h3>Натисніть кнопку для збереження в базу даних</h3>
+      <button @click="saveTime">Зберегти час</button>
+      <h3 v-if="savedTimes.length && showSavedTimes">
+        Раніше збережені часи:
+      </h3>
+      <div v-if="showSavedTimes" class="deleted-items" v-for="savedTime in savedTimes" :key="savedTime.id">
+        <div class="deleted-item">{{ savedTime.time }}</div>
+        <button class="btn-sm bg-red" @click="() => deleteTime(savedTime.id)">
+          Видалити
+        </button>
+      </div>
     </div>
-    <h3>Аналіз збереженних даних</h3>
-    <button @click="analyzeTime">Аналіз</button>
-    <canvas id="timeChart"></canvas>
+    <div class="right-section">
+      <h3>Аналіз збереженних даних</h3>
+      <div class="analyze-button">
+        <button @click="analyzeTime">Аналіз</button>
+      </div>
+      <canvas id="timeChart"></canvas>
+    </div>
   </div>
 </template>
 
@@ -51,16 +59,15 @@ export default {
 h1 {
   font-weight: 500;
   font-size: 4rem;
-  top: -10px;
 }
 
 h3 {
-  font-size: 2rem;
+  font-size: 1.2rem;
 }
 
 button {
-  font-size: 1.7rem;
-  margin: 30px;
+  font-size: 1.1rem;
+  margin: 10px;
   background-color: #fdb44b;
   border-radius: 5px;
   border: none;
@@ -81,7 +88,7 @@ button {
 
 .deleted-items {
   color: #fdb44b;
-  font-size: 1.7rem;
+  font-size: 1.25rem;
 }
 
 .deleted-item {
@@ -90,6 +97,32 @@ button {
 }
 
 .greetings {
+  margin-bottom: 20px;
   text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: left;
+  height: 100vh;
+}
+
+.left-section {
+  position: relative;
+  width: 50%;
+  padding-right: 10px;
+  padding-left: 88px;
+}
+
+.right-section {
+  position: relative;
+  width: 50%;
+  padding-left: 10px;
+  padding-right: 100px;
+}
+
+.analyze-button {
+  position: sticky;
+  top: 20px;
 }
 </style>
