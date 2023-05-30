@@ -65,8 +65,8 @@ async function analyzeTime() {
         datasets: [{
           label: 'Різниця часу (в сек)',
           data: timeDifferences,
-          backgroundColor: 'rgba(75, 192, 192, 0.2)',
-          borderColor: 'rgba(75, 192, 192, 1)',
+          backgroundColor: 'rgba(75, 192, 192, 0.3)',
+          borderColor: '#fdb44b',
           borderWidth: 3
         }]
       },
