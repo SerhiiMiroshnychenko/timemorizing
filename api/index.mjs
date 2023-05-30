@@ -29,6 +29,12 @@ app.delete('/time/:id', async (req, res) => {
   res.send(await deleteRecord(req.params.id))
 })
 
+app.get('/analyze', async (_, res) => {
+  const records = await readRecords()
+  const chartData = generateChartData(records)
+  res.json(chartData)
+})
+
 app.listen(PORT, () => {
   console.log(`Express web server is running at http://localhost:${PORT}`)
 })

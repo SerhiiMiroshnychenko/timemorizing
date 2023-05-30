@@ -15,5 +15,6 @@ import Time from './components/Time.vue'
 
 .green {
   color: #fdb44b;
+  ;
 }
 </style>

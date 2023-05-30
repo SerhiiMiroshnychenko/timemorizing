@@ -35,4 +35,78 @@ async function deleteTime(id) {
   }
 }
 
-export { startInterval, saveTime, deleteTime }
+async function analyzeTime() {
+  try {
+    const response = await fetch('http://localhost:5555/times');
+    const json = await response.json();
+    const timeDifferences = [];
+
+    if (json.length > 1) {
+      for (let i = 1; i < json.length; i++) {
+        const currentTime = moment(json[i].time, 'HH:mm:ss');
+        const previousTime = moment(json[i - 1].time, 'HH:mm:ss');
+        const differenceInSeconds = previousTime.diff(currentTime, 'seconds');
+        timeDifferences.push(differenceInSeconds);
+      }
+    }
+
+    timeDifferences.reverse(); // Зміна порядку елементів на зворотний
+
+    // Знищення попереднього графіку, якщо він існує
+    if (this.timeChart) {
+      this.timeChart.destroy();
+    }
+
+    const ctx = document.getElementById('timeChart').getContext('2d');
+    this.timeChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: timeDifferences.map((_, index) => `Проміжок часу ${index + 1}`),
+        datasets: [{
+          label: 'Різниця часу (в сек)',
+          data: timeDifferences,
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 3
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              font: {
+                size: 20, // розмір шрифту на вісі X
+                color: 'red' // колір шрифту на вісі X
+              }
+            }
+          },
+          x: {
+            ticks: {
+              font: {
+                size: 20, // розмір шрифту на вісі X
+                color: 'gold' // колір шрифту на вісі X
+              }
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            labels: {
+              font: {
+                size: 20, // розмір шрифту на вісі X
+                color: 'white' // колір шрифту на вісі X
+              }
+            }
+          }
+        }
+      }
+    });
+
+  } catch (error) {
+    console.error('Помилка під час отримання даних:', error);
+  }
+}
+
+
+export { startInterval, saveTime, deleteTime, analyzeTime }

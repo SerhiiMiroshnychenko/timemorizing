@@ -1,6 +1,6 @@
 <script>
 import moment from 'moment'
-import { startInterval, saveTime, deleteTime } from '../utils/time'
+import { startInterval, saveTime, deleteTime, analyzeTime } from '../utils/time'
 
 export default {
   props: {
@@ -16,6 +16,7 @@ export default {
     startInterval,
     saveTime,
     deleteTime,
+    analyzeTime
   },
   created: async function () {
     this.startInterval()
@@ -40,6 +41,9 @@ export default {
         Видалити
       </button>
     </div>
+    <h3>Аналіз збереженних даних</h3>
+    <button @click="analyzeTime">Аналіз</button>
+    <canvas id="timeChart"></canvas>
   </div>
 </template>
 
@@ -55,15 +59,15 @@ h3 {
 }
 
 button {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   margin: 30px;
   background-color: #fdb44b;
   border-radius: 5px;
   border: none;
   padding: 10px;
   cursor: pointer;
-  color: #005792;
-  font-weight: 600;
+  color: #014673;
+  font-family: monospace;
 }
 
 .btn-sm {
