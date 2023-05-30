@@ -63,7 +63,7 @@ async function analyzeTime() {
       data: {
         labels: timeDifferences.map((_, index) => `Проміжок часу ${index + 1}`),
         datasets: [{
-          label: 'Різниця часу (в сек)',
+          label: '   Секунди',
           data: timeDifferences,
           backgroundColor: 'rgba(75, 192, 192, 0.3)',
           borderColor: '#fdb44b',
